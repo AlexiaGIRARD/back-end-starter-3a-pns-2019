@@ -4,7 +4,7 @@ const { Student } = require('../../models');
 
 const attachStudent = function (ticket) {
   const student = Student.getById(ticket.studentId);
-  const curTicket = ticket;
+  const curTicket = Object.assign({}, ticket);
   curTicket.student = student;
   return curTicket;
 };
