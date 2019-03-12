@@ -2,12 +2,12 @@ const { Router } = require('express');
 const { Student } = require('../../models');
 const { Ticket } = require('../../models');
 
-const attachTicket = function (student) {
+function attachTicket(student) {
   const tickets = Ticket.get().filter(t => parseInt(t.studentId, 10) === student.id);
   const curStudent = Object.assign({}, student);
   curStudent.tickets = tickets;
   return curStudent;
-};
+}
 
 const router = new Router();
 router.get('/', (req, res) => res.status(200).json(Student.get()));
